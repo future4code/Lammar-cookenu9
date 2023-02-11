@@ -1,4 +1,4 @@
-import { InvalidPassword, UserNotFound } from "../error/CustomError";
+import { CustomError,InvalidPassword, UserNotFound } from "../error/CustomError";
 import { LoginInputDTO, User, UserInputDTO } from "../model/user";
 import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
@@ -32,6 +32,7 @@ export class UserBusiness {
             return token
         }
         catch (error:any){
+            throw new Error
             console.log(error)
         }
     }
@@ -42,24 +43,30 @@ export class UserBusiness {
 
             
 
-            const user = await this.userDatabase.findUserByEmail(email)
+            const user:any = await this.userDatabase.findUserByEmail(email)
             
             if(!user){
-                throw new UserNotFound()
+                throw new UserNotFound();
             }
 
             if(user.password !== password){
-                throw new InvalidPassword()
+                throw new InvalidPassword();
             }
+            const {id} = user
 
-
-            const token = authenticator.generateToken({id: user.id})
+            const token = authenticator.generateToken({id})
 
             return token
         }
         catch (error:any){
-            console.log(error)
+            throw new CustomError(400, error.message)
         }
+    }
 
-
+    public getUserInfo = async (token:string) => {
+        const {id} = authenticator.verifyToken(token)
+        console.log(id)
+        const userInfo = await this.userDatabase.getUserInfo(id)
+        return userInfo
+    }
 }

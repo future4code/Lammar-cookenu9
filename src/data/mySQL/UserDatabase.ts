@@ -35,4 +35,17 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
             throw new Error(error.message)
         }
     }
+
+    public getUserInfo = async (id: string): Promise<void> => {
+        try {
+            UserDatabase.connection.initialize()
+            const result = await UserDatabase.connection(this.userTable)
+            .where('id', id)
+            return result[0]
+        }
+        catch (error:any) {
+            console.log(error.message)
+            throw new Error(error.message)
+        }
+    }
 }

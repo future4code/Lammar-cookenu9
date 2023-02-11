@@ -1,27 +1,21 @@
-import { app } from "./controller/app";
-import { recipeRouter } from "./controller/routes/recipeRouter";
-import { userRouter } from "./controller/routes/userRouter";
-
-
-app.use('/user', userRouter)
-app.use('/recipe', recipeRouter)
-
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const app_1 = require("./controller/app");
+const recipeRouter_1 = require("./controller/routes/recipeRouter");
+const userRouter_1 = require("./controller/routes/userRouter");
+app_1.app.use('/user', userRouter_1.userRouter);
+app_1.app.use('/recipe', recipeRouter_1.recipeRouter);
 // /**************************** ENDPOINTS ******************************/
-
 // app.post('/users', async (req: Request, res: Response) => {
 //    try {
 //       let message = "Success!"
 //       const { name, email, password } = req.body
-
 //       if (!name || !email || !password) {
 //          res.statusCode = 406
 //          message = '"name", "email" and "password" must be provided'
 //          throw new Error(message)
 //       }
-
 //       const id: string = Date.now().toString()
-
 //       await connection('labook_users')
 //          .insert({
 //             id,
@@ -29,24 +23,18 @@ app.use('/recipe', recipeRouter)
 //             email,
 //             password
 //          })
-
 //       res.status(201).send({ message })
-
 //    } catch (error:any) {
 //       res.statusCode = 400
 //       let message = error.sqlMessage || error.message
 //       res.send({ message })
 //    }
 // })
-
 // app.post('/post', async (req: Request, res: Response) => {
 //    try {
 //       let message = "Success!"
-
 //       const { photo, description, type, authorId } = req.body
-
 //       const postId: string = Date.now().toString()
-
 //       await connection("labook_posts")
 //          .insert({
 //             id:postId,
@@ -55,32 +43,25 @@ app.use('/recipe', recipeRouter)
 //             type,
 //             author_id: authorId
 //          })
-
 //       res.status(201).send({ message })
-
 //    } catch (error:any) {
 //       let message = error.sqlMessage || error.message
 //       res.statusCode = 400
 //       res.send({ message })
 //    }
 // })
-
 // app.get('/posts/:id', async (req: Request, res: Response) => {
 //    try {
 //       let message = "Success!"
-
 //       const { id } = req.params
-
 //       const queryResult: any = await connection("labook_posts")
 //          .select("*")
 //          .where({ id })
-
 //       if (!queryResult[0]) {
 //          res.statusCode = 404
 //          message = "Post not found"
 //          throw new Error(message)
 //       }
-
 //       const post: post = {
 //          id: queryResult[0].id,
 //          photo: queryResult[0].photo,
@@ -89,18 +70,14 @@ app.use('/recipe', recipeRouter)
 //          createdAt: queryResult[0].created_at,
 //          authorId: queryResult[0].author_id,
 //       }
-
 //       res.status(200).send({ message, post })
-
 //    } catch (error:any) {
 //       let message = error.sqlMessage || error.message
 //       res.statusCode = 400
 //       res.send({ message })
 //    }
 // })
-
 // /**************************** SERVER INIT ******************************/
-
 // app.listen(3003, () => {
 //    console.log("Server running on port 3003")
 // })

@@ -1,5 +1,5 @@
 export class CustomError extends Error {
-    constructor(public statusCode:number, public message:string) {
+    constructor(statusCode:number, message:string) {
         super(message)
     }
 }
@@ -13,5 +13,11 @@ export class UserNotFound extends CustomError{
 export class InvalidPassword extends CustomError{
     constructor (){
         super(400, "Senha inválida")
+    }
+}
+
+export class Unauthorized extends CustomError{
+    constructor (){
+        super(401, "Usuário não autorizado")
     }
 }

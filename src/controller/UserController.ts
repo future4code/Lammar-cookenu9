@@ -3,6 +3,7 @@ import { LoginInputDTO, UserInputDTO } from "../model/user";
 import { UserBusiness } from "../business/UserBusiness";
 
 
+
 export class UserController {
 
     constructor(private userBusiness : UserBusiness) {}
@@ -42,4 +43,15 @@ export class UserController {
             res.status(400).send(error.message)
         }
     }
+
+    public getUserInfo = async (req: Request, res: Response) => {
+        try {
+            const token = req.headers.authorization as string
+            const userInfo = await this.userBusiness.getUserInfo(token);
+            res.status(200).send(userInfo)
+        } catch (error: any) {
+            res.status(400).send(error.message)
+        }
+    }
+
 }
