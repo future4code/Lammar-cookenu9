@@ -1,0 +1,36 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json 
+
+{
+    "name": "Lorenzo",
+    "email": "loroza@email.com",
+    "password": "12345"
+}
+
+
+#########
+
+POST http://localhost:3003/user/login
+Content-Type: application/json 
+
+{
+    "email": "loroza@email.com",
+    "password": "12345"
+}
+
+######
+
+GET http://localhost:3003/user/
+Content-Type: application/json 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUzYmEzNWI5LTYyOTktNDRjNS1hMWJiLTEzMmY1N2ZjZWM1NiIsImlhdCI6MTY3NjE1MjY1NSwiZXhwIjoxNjc3MDE2NjU1fQ.4cK3qbU2Z3mMo5hDxV5dPVswOiqA0bOB9D76xop9tJg
+
+######
+
+POST http://localhost:3003/recipe/
+Content-Type: application/json 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUzYmEzNWI5LTYyOTktNDRjNS1hMWJiLTEzMmY1N2ZjZWM1NiIsImlhdCI6MTY3NjE1NzY1OCwiZXhwIjoxNjc3MDIxNjU4fQ.KOtrOWCtsszw40_CJs0vBdcRU2EXYizTVyNm_QUXbtY
+
+{
+    "title": "Pão com ovo",
+    "description": "Ingredientes:Pão 3 ovos Modo de fazer: Frite os ovos e coloque no pão"
+}
