@@ -21,3 +21,9 @@ export class Unauthorized extends CustomError{
         super(401, "Usuário não autorizado")
     }
 }
+
+export class RecipeNotFound extends CustomError{
+    constructor (){
+        super(404, "Receita não encontrado")
+    }
+}

@@ -1,4 +1,4 @@
-import { Recipe, RecipeInputDTO } from "../model/recipe";
+import { Recipe, RecipeInputDTO, GetRecipeDTO } from "../model/recipe";
 import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
 import { RecipeRepository } from "./RecipeRepository";
@@ -27,9 +27,14 @@ export class RecipeBusiness {
             await this.recipeDatabase.createRecipe(recipe)
         } catch (error) {
             throw new Error()
-        }
+        }  
+    }
 
-        
+    public getRecipe = async (getRecipeInput:GetRecipeDTO) => {
+        const {token, recipeId} = getRecipeInput
+        const {id} = authenticator.verifyToken(token)
+        const recipeInfo = await this.recipeDatabase.getRecipeInfo(recipeId)
+        return recipeInfo
     }
 
 }

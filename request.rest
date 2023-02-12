@@ -24,6 +24,14 @@ GET http://localhost:3003/user/profile
 Content-Type: application/json 
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY0NzJiMThmLTVjZWEtNDBkOS05MmE2LWU5MGNkYjI1NThhNyIsImlhdCI6MTY3NjIyMjQ4MiwiZXhwIjoxNjc3MDg2NDgyfQ.HCtmH5Tq8FORkJtN_JnK6_WBa6P_Bxgq9CtISLSvN30
 //Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUzYmEzNWI5LTYyOTktNDRjNS1hMWJiLTEzMmY1N2ZjZWM1NiIsImlhdCI6MTY3NjE1NzY1OCwiZXhwIjoxNjc3MDIxNjU4fQ.KOtrOWCtsszw40_CJs0vBdcRU2EXYizTVyNm_QUXbtY
+
+#############
+
+GET http://localhost:3003/user/profile/f472b18f-5cea-40d9-92a6-e90cdb2558a7
+Content-Type: application/json 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY0NzJiMThmLTVjZWEtNDBkOS05MmE2LWU5MGNkYjI1NThhNyIsImlhdCI6MTY3NjIyMjQ4MiwiZXhwIjoxNjc3MDg2NDgyfQ.HCtmH5Tq8FORkJtN_JnK6_WBa6P_Bxgq9CtISLSvN30
+
+
 ######
 
 POST http://localhost:3003/recipe/
@@ -35,8 +43,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUzYmEzNWI5LTYyOTkt
     "description": "Ingredientes:Pão 3 ovos Modo de fazer: Frite os ovos e coloque no pão"
 }
 
-#############
+########
 
-GET http://localhost:3003/user/profile/f472b18f-5cea-40d9-92a6-e90cdb2558a7
+GET http://localhost:3003/recipe/b0fc02f5-a95c-4895-ae8c-831dbfde23f4
 Content-Type: application/json 
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY0NzJiMThmLTVjZWEtNDBkOS05MmE2LWU5MGNkYjI1NThhNyIsImlhdCI6MTY3NjIyMjQ4MiwiZXhwIjoxNjc3MDg2NDgyfQ.HCtmH5Tq8FORkJtN_JnK6_WBa6P_Bxgq9CtISLSvN30
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUzYmEzNWI5LTYyOTktNDRjNS1hMWJiLTEzMmY1N2ZjZWM1NiIsImlhdCI6MTY3NjE1NzY1OCwiZXhwIjoxNjc3MDIxNjU4fQ.KOtrOWCtsszw40_CJs0vBdcRU2EXYizTVyNm_QUXbtY
