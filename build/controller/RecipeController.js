@@ -29,6 +29,21 @@ class RecipeController {
                 res.status(400).send(error.message);
             }
         });
+        this.getRecipe = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const token = req.headers.authorization;
+                const recipeId = req.params.id;
+                const getRecipeInput = {
+                    token: token,
+                    recipeId: recipeId
+                };
+                const userInfo = yield this.recipeBusiness.getRecipe(getRecipeInput);
+                res.status(200).send(userInfo);
+            }
+            catch (error) {
+                res.status(400).send(error.message);
+            }
+        });
     }
 }
 exports.RecipeController = RecipeController;

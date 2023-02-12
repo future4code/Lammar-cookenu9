@@ -36,6 +36,15 @@ exports.connection
          FOREIGN KEY (created_by) REFERENCES cookenu_users (id)
       );
 
+      CREATE TABLE IF NOT EXISTS cookenu_follows(
+         id VARCHAR(255) PRIMARY KEY,
+         fk_follower VARCHAR(255),
+         fk_userToFollow VARCHAR(255),
+         FOREIGN KEY (fk_follower) REFERENCES cookenu_users (id),
+         FOREIGN KEY (fk_userToFollow) REFERENCES cookenu_users (id)
+      );
+
+
    `)
     .then(() => {
     console.log(`Tables created successfully!`);

@@ -27,3 +27,9 @@ export class RecipeNotFound extends CustomError{
         super(404, "Receita não encontrado")
     }
 }
+
+export class InvalidUnfollowRequest extends CustomError{
+    constructor (){
+        super(404, "Este usuário não se encontra na sua lista de usuários seguidos")
+    }
+}

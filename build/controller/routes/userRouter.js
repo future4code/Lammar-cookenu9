@@ -14,4 +14,5 @@ const userBusiness = new UserBusiness_1.UserBusiness(userDatabase);
 const userController = new UserController_1.UserController(userBusiness);
 exports.userRouter.post("/signup", (req, res) => userController.signup(req, res));
 exports.userRouter.post("/login", (req, res) => userController.login(req, res));
-exports.userRouter.get("/", (req, res) => userController.getUserInfo(req, res));
+exports.userRouter.get("/profile", (req, res) => userController.getProfile(req, res));
+exports.userRouter.get("/profile/:id", (req, res) => userController.getUser(req, res));

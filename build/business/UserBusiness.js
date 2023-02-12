@@ -55,10 +55,15 @@ class UserBusiness {
                 throw new CustomError_1.CustomError(400, error.message);
             }
         });
-        this.getUserInfo = (token) => __awaiter(this, void 0, void 0, function* () {
+        this.getProfile = (token) => __awaiter(this, void 0, void 0, function* () {
             const { id } = authenticator.verifyToken(token);
-            console.log(id);
             const userInfo = yield this.userDatabase.getUserInfo(id);
+            return userInfo;
+        });
+        this.getUser = (getUserInput) => __awaiter(this, void 0, void 0, function* () {
+            const { token, userId } = getUserInput;
+            const { id } = authenticator.verifyToken(token);
+            const userInfo = yield this.userDatabase.getUserInfo(userId);
             return userInfo;
         });
     }

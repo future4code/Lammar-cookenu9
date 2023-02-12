@@ -48,3 +48,13 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUzYmEzNWI5LTYyOTkt
 GET http://localhost:3003/recipe/b0fc02f5-a95c-4895-ae8c-831dbfde23f4
 Content-Type: application/json 
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUzYmEzNWI5LTYyOTktNDRjNS1hMWJiLTEzMmY1N2ZjZWM1NiIsImlhdCI6MTY3NjE1NzY1OCwiZXhwIjoxNjc3MDIxNjU4fQ.KOtrOWCtsszw40_CJs0vBdcRU2EXYizTVyNm_QUXbtY
+
+
+######
+DELETE http://localhost:3003/follow/
+Content-Type: application/json 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUzYmEzNWI5LTYyOTktNDRjNS1hMWJiLTEzMmY1N2ZjZWM1NiIsImlhdCI6MTY3NjE1NzY1OCwiZXhwIjoxNjc3MDIxNjU4fQ.KOtrOWCtsszw40_CJs0vBdcRU2EXYizTVyNm_QUXbtY
+
+{
+    "userToUnfollowId" : "e3ba35b9-6299-44c5-a1bb-132f57fcec56"
+}

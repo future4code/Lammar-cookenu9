@@ -13,3 +13,4 @@ const recipeDatabase = new RecipeDatabase_1.RecipeDatabase;
 const recipeBusiness = new RecipeBusiness_1.RecipeBusiness(recipeDatabase);
 const recipeController = new RecipeController_1.RecipeController(recipeBusiness);
 exports.recipeRouter.post("/", (req, res) => recipeController.createRecipe(req, res));
+exports.recipeRouter.get("/:id", (req, res) => recipeController.getRecipe(req, res));
