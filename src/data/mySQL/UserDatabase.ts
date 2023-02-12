@@ -1,6 +1,7 @@
 import { UserRepository } from "../../business/UserRepository";
 import { User } from "../../model/user";
 import { BaseDatabase } from "./BaseDatabase";
+import { UserNotFound } from "../../error/CustomError";
 
 
 
@@ -41,6 +42,9 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
             UserDatabase.connection.initialize()
             const result = await UserDatabase.connection(this.userTable)
             .where('id', id)
+            if(!result[0]){
+                throw new UserNotFound ();
+            }
             return result[0]
         }
         catch (error:any) {
