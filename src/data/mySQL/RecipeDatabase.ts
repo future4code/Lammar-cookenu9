@@ -1,4 +1,5 @@
 import { RecipeRepository } from "../../business/RecipeRepository";
+import { RecipeNotFound } from "../../error/CustomError";
 import { Recipe } from "../../model/recipe";
 import { BaseDatabase } from "./BaseDatabase";
 
@@ -16,6 +17,22 @@ export class RecipeDatabase extends BaseDatabase implements RecipeRepository {
                 created_at: recipe.createdAt
                 
             }).into(this.recipeTable)
+        }
+        catch (error:any) {
+            console.log(error.message)
+            throw new Error(error.message)
+        }
+    }
+
+    public getRecipeInfo = async (recipeId: string): Promise<void> => {
+        try {
+            RecipeDatabase.connection.initialize()
+            const result = await RecipeDatabase.connection(this.recipeTable)
+            .where('id', recipeId)
+            if(!result[0]){
+                throw new RecipeNotFound ();
+            }
+            return result[0]
         }
         catch (error:any) {
             console.log(error.message)
