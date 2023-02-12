@@ -1,5 +1,5 @@
 import { CustomError,InvalidPassword, UserNotFound } from "../error/CustomError";
-import { LoginInputDTO, User, UserInputDTO } from "../model/user";
+import { GetUserDTO, LoginInputDTO, User, UserInputDTO } from "../model/user";
 import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
 import { UserRepository } from "./UserRepository";
@@ -63,10 +63,16 @@ export class UserBusiness {
         }
     }
 
-    public getUserInfo = async (token:string) => {
+    public getProfile = async (token:string) => {
         const {id} = authenticator.verifyToken(token)
-        console.log(id)
         const userInfo = await this.userDatabase.getUserInfo(id)
+        return userInfo
+    }
+
+    public getUser = async (getUserInput:GetUserDTO) => {
+        const {token, userId} = getUserInput
+        const {id} = authenticator.verifyToken(token)
+        const userInfo = await this.userDatabase.getUserInfo(userId)
         return userInfo
     }
 }

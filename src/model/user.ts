@@ -19,3 +19,8 @@ export interface LoginInputDTO {
     email: string,
     password: string,
 }
+
+export interface GetUserDTO {
+    token: string,
+    userId: string,
+}
