@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserDatabase = void 0;
 const BaseDatabase_1 = require("./BaseDatabase");
+const CustomError_1 = require("../../error/CustomError");
 class UserDatabase extends BaseDatabase_1.BaseDatabase {
     constructor() {
         super(...arguments);
@@ -47,6 +48,9 @@ class UserDatabase extends BaseDatabase_1.BaseDatabase {
                 UserDatabase.connection.initialize();
                 const result = yield UserDatabase.connection(this.userTable)
                     .where('id', id);
+                if (!result[0]) {
+                    throw new CustomError_1.UserNotFound();
+                }
                 return result[0];
             }
             catch (error) {

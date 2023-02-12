@@ -9,39 +9,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RecipeBusiness = void 0;
+exports.FollowBusiness = void 0;
 const Authenticator_1 = require("../services/Authenticator");
 const IdGenerator_1 = require("../services/IdGenerator");
 const idGenerator = new IdGenerator_1.IdGenerator();
 const authenticator = new Authenticator_1.Authenticator();
-class RecipeBusiness {
-    constructor(recipeDatabase) {
-        this.recipeDatabase = recipeDatabase;
-        this.createRecipe = (input) => __awaiter(this, void 0, void 0, function* () {
+class FollowBusiness {
+    constructor(followDatabase) {
+        this.followDatabase = followDatabase;
+        this.followUser = (input) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const { token, title, description } = input;
-                const createdBy = authenticator.verifyToken(token).id;
-                const createdAt = new Date();
+                const { token, userToFollowId } = input;
+                const follower = authenticator.verifyToken(token).id;
                 const id = idGenerator.generateId();
-                const recipe = {
+                const followRequest = {
                     id: id,
-                    title: title,
-                    description: description,
-                    createdBy: createdBy,
-                    createdAt: createdAt
+                    follower: follower,
+                    userToFollowId: userToFollowId
                 };
-                yield this.recipeDatabase.createRecipe(recipe);
+                yield this.followDatabase.followUser(followRequest);
             }
             catch (error) {
-                throw new Error();
+                throw new Error(error.message);
             }
-        });
-        this.getRecipe = (getRecipeInput) => __awaiter(this, void 0, void 0, function* () {
-            const { token, recipeId } = getRecipeInput;
-            const { id } = authenticator.verifyToken(token);
-            const recipeInfo = yield this.recipeDatabase.getRecipeInfo(recipeId);
-            return recipeInfo;
         });
     }
 }
-exports.RecipeBusiness = RecipeBusiness;
+exports.FollowBusiness = FollowBusiness;

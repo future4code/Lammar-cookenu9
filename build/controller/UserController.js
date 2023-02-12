@@ -42,10 +42,25 @@ class UserController {
                 res.status(400).send(error.message);
             }
         });
-        this.getUserInfo = (req, res) => __awaiter(this, void 0, void 0, function* () {
+        this.getProfile = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const token = req.headers.authorization;
-                const userInfo = yield this.userBusiness.getUserInfo(token);
+                const profile = yield this.userBusiness.getProfile(token);
+                res.status(200).send(profile);
+            }
+            catch (error) {
+                res.status(400).send(error.message);
+            }
+        });
+        this.getUser = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const token = req.headers.authorization;
+                const userId = req.params.id;
+                const getUserInput = {
+                    token: token,
+                    userId: userId
+                };
+                const userInfo = yield this.userBusiness.getUser(getUserInput);
                 res.status(200).send(userInfo);
             }
             catch (error) {

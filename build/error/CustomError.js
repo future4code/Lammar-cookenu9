@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Unauthorized = exports.InvalidPassword = exports.UserNotFound = exports.CustomError = void 0;
+exports.RecipeNotFound = exports.Unauthorized = exports.InvalidPassword = exports.UserNotFound = exports.CustomError = void 0;
 class CustomError extends Error {
     constructor(statusCode, message) {
         super(message);
@@ -25,3 +25,9 @@ class Unauthorized extends CustomError {
     }
 }
 exports.Unauthorized = Unauthorized;
+class RecipeNotFound extends CustomError {
+    constructor() {
+        super(404, "Receita não encontrado");
+    }
+}
+exports.RecipeNotFound = RecipeNotFound;
